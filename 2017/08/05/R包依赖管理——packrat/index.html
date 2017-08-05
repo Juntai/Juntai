@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="jacman," />
+  <meta name="keywords" content="R,包依赖,工程,部署," />
 
 
 
@@ -87,18 +87,16 @@
 
 
 
-<meta name="description" content="分享jacman主题的一些配置，和对[如何搭建一个独立博客——简明Github Pages与Hexo教程]的一些修改。">
+<meta name="description" content="当你和别人共用一台R服务器，或在本地写代码部署到公用的R服务器上，你可能会遇到包版本冲突的问题，本文介绍的工具packrat正是你需要的工具。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="jacman主题的一些配置">
-<meta property="og:url" content="juntai.github.io/2015/06/20/jacman主题的一些配置/index.html">
+<meta property="og:title" content="R包依赖管理——packrat">
+<meta property="og:url" content="juntai.github.io/2017/08/05/R包依赖管理——packrat/index.html">
 <meta property="og:site_name" content="Juntai的博客">
-<meta property="og:description" content="分享jacman主题的一些配置，和对[如何搭建一个独立博客——简明Github Pages与Hexo教程]的一些修改。">
-<meta property="og:image" content="juntai.github.io/images/hexo-version.png">
-<meta property="og:updated_time" content="2015-11-15T04:45:28.000Z">
+<meta property="og:description" content="当你和别人共用一台R服务器，或在本地写代码部署到公用的R服务器上，你可能会遇到包版本冲突的问题，本文介绍的工具packrat正是你需要的工具。">
+<meta property="og:updated_time" content="2017-08-05T12:19:02.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="jacman主题的一些配置">
-<meta name="twitter:description" content="分享jacman主题的一些配置，和对[如何搭建一个独立博客——简明Github Pages与Hexo教程]的一些修改。">
-<meta name="twitter:image" content="juntai.github.io/images/hexo-version.png">
+<meta name="twitter:title" content="R包依赖管理——packrat">
+<meta name="twitter:description" content="当你和别人共用一台R服务器，或在本地写代码部署到公用的R服务器上，你可能会遇到包版本冲突的问题，本文介绍的工具packrat正是你需要的工具。">
 
 
 
@@ -130,7 +128,7 @@
 
 
 
-  <title> jacman主题的一些配置 | Juntai的博客 </title>
+  <title> R包依赖管理——packrat | Juntai的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -259,7 +257,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="juntai.github.io/2015/06/20/jacman主题的一些配置/">
+    <link itemprop="mainEntityOfPage" href="juntai.github.io/2017/08/05/R包依赖管理——packrat/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Juntai">
@@ -280,7 +278,7 @@
             
             
               
-                jacman主题的一些配置
+                R包依赖管理——packrat
               
             
           </h1>
@@ -295,8 +293,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-06-20T16:47:55+08:00">
-                2015-06-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-05T20:12:53+08:00">
+                2017-08-05
               </time>
             
 
@@ -318,8 +316,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/jacman/" itemprop="url" rel="index">
-                    <span itemprop="name">jacman</span>
+                  <a href="/categories/R经验总结/" itemprop="url" rel="index">
+                    <span itemprop="name">R经验总结</span>
                   </a>
                 </span>
 
@@ -336,8 +334,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2015/06/20/jacman主题的一些配置/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/20/jacman主题的一些配置/" itemprop="commentCount"></span>
+                <a href="/2017/08/05/R包依赖管理——packrat/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/08/05/R包依赖管理——packrat/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -345,7 +343,7 @@
 
           
           
-             <span id="/2015/06/20/jacman主题的一些配置/" class="leancloud_visitors" data-flag-title="jacman主题的一些配置">
+             <span id="/2017/08/05/R包依赖管理——packrat/" class="leancloud_visitors" data-flag-title="R包依赖管理——packrat">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -363,7 +361,7 @@
 
           
               <div class="post-description">
-                  分享jacman主题的一些配置，和对[如何搭建一个独立博客——简明Github Pages与Hexo教程]的一些修改。
+                  当你和别人共用一台R服务器，或在本地写代码部署到公用的R服务器上，你可能会遇到包版本冲突的问题，本文介绍的工具packrat正是你需要的工具。
               </div>
           
 
@@ -378,38 +376,22 @@
       
 
       
-        <p>刚按照<a href="http://cnfeat.com/2014/05/10/2014-05-11-how-to-build-a-blog/" target="_blank" rel="external">如何搭建一个独立博客——简明Github Pages与Hexo教程</a>在github上建立了这个博客。<br>很久之前自己就尝试过在github上搭建博客，是基于jekyll的，做完之后感觉太丑漏了。最近又想起这件事，觉得自己有点蛇头蛇尾，所以趁着端午假期把博客正式建立起来。<br>用了大半天时间终于看着像那么回事了。在此感谢cnfeat陈素封博主！</p>
-<p>本文主要包括两个部分：</p>
-<ul>
-<li>配置：cnfeat把绝大部分工作都详尽地写出来了，剩下的多是些配置工作，我把我做的一些配置记录在本文；</li>
-<li>教程的一些修改：可能是环境和软件版本的问题，教程中的个别地方需要稍作修改，也记录在本文。</li>
-</ul>
-<h1 id="配置jacman"><a href="#配置jacman" class="headerlink" title="配置jacman"></a>配置jacman</h1><h2 id="公式"><a href="#公式" class="headerlink" title="公式"></a>公式</h2><p>jacman支持公式编辑，我复制过来的模板中没有打开这个选项，只需要在配置文件中将其修改为可用即可。<br>在/Hexo/themes/jacman/_config.yml文件中修改：</p>
-<blockquote>
-<p>mathjax: True       #enable mathjax if true</p>
-</blockquote>
-<h2 id="评论"><a href="#评论" class="headerlink" title="评论"></a>评论</h2><p>jacman支持多说和disqus评论，只需要在/Hexo/themes/jacman/_config.yml文件中的对应位置加上在多说或disqus申请到的short_name即可。<br>我使用的是多说，配置修改如下：</p>
-<blockquote>
-<p>duoshuo_shortname: juntaiblog   ## e.g. wuchong   your duoshuo short name.<br>disqus_shortname:     ## e.g. wuchong   your disqus short name.</p>
-</blockquote>
-<h1 id="教程的一些修改"><a href="#教程的一些修改" class="headerlink" title="教程的一些修改"></a>教程的一些修改</h1><p>我是在win7-64bit上做的，下面是我安装的hexo版本信息：<br><img src="/images/hexo-version.png" alt="hexo版本信息"></p>
-<h2 id="部署Hexo"><a href="#部署Hexo" class="headerlink" title="部署Hexo"></a>部署Hexo</h2><p>第一次在浏览器中输入localhost:4000查看时，按照教程输入命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo g</div><div class="line">$ hexo s</div></pre></td></tr></table></figure></p>
-<p>服务不启动，我采用的方法是输入如下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ hexo g</div><div class="line">$ npm install</div><div class="line">$ hexo s</div></pre></td></tr></table></figure></p>
-<p>这样服务就启动了。并且以后不需要再增加npm install了。</p>
-<h2 id="使用与调试"><a href="#使用与调试" class="headerlink" title="使用与调试"></a>使用与调试</h2><p>部署到Github前需要配置_config.yml文件，若按按照教程配置type: github，部署的时候会报错。</p>
-<blockquote>
-<p>deploy:<br>type: github<br>repository: git@github.com:Juntai/juntai.github.io<br>branch: master</p>
-</blockquote>
-<p>搜索了一下，可能与hexo的版本有关系，需要做如下修改。</p>
-<ul>
-<li><p>把type改为git：</p>
-<blockquote>
-<p>deploy:<br>type: git<br>repository: git@github.com:Juntai/juntai.github.io<br>branch: master</p>
-</blockquote>
-</li>
-<li><p>部署命令也要做修改，在部署之前安装hexo-deployer-git：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">hexo clean</div><div class="line">hexo generate</div><div class="line">npm install hexo-deployer-git --save</div><div class="line">hexo deploy</div></pre></td></tr></table></figure></li>
-</ul>
+        <p>如果你在跟同学或者同事共用一台R服务器，很可能遇到过这样的情况——在本地机器上调好的程序放到服务器上就各种报错，还是些看起来很奇怪的错误。带着满脑子的问号（更可能是一万个草泥马）在Google上一顿狂搜，发现说各种可能性的人都有，此时你一定很崩溃，你可能很想写一本书——《R:从入门到放弃》。恭喜你！你很可能踩到了R包版本依赖的坑，本地的R包版本跟服务器上的R包版本不一致。在骂我幸灾乐祸之前，请耐心看完这篇文章，看完以后你就打败了99%的R用户（哈哈哈！）。</p>
+<p>下面请出packrat包。这个包是用来做R包依赖管理的，拥有它，你就再也不用担心你写R时用的包版本跟别人不一致，甚至跟自己的其他工程用的包版本不一致了。下面分别从原理、使用方法上介绍如何使用它。</p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>packrat包会为你的R工程建立一个私有的library，在这个工程里使用的所有R包都会安装在这个私有的library里，在执行代码时同样是使用这个私有library中R包。从而，每一个R工程都会有自己的library，也就不会有包不一致的情况出现了。有了packrat包的加持，你的工程就实现了独立性、可移植性，通俗点说，想把工程放哪里就放哪里。</p>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><h3 id="1-安装packrat"><a href="#1-安装packrat" class="headerlink" title="1.安装packrat"></a>1.安装packrat</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">install.package(<span class="string">"packrat"</span>)</div></pre></td></tr></table></figure>
+<h3 id="2-建工程，并初始化packrat"><a href="#2-建工程，并初始化packrat" class="headerlink" title="2.建工程，并初始化packrat"></a>2.建工程，并初始化packrat</h3><p>这里所说的工程就是指一个文件夹，文件夹里包含你的R脚本。然后执行以下代码：<br><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">packrat::init(<span class="string">"R工程目录"</span>)</div></pre></td></tr></table></figure></p>
+<p>初始化之后，如果你发现你的工程目录下多了一个文件夹“packrat”，说明你初始化成功了。这个文件夹会用来存放packrat所需要的文件，其中包括这个工程的私有library。详细介绍参见<a href="http://rstudio.github.io/packrat/" target="_blank" rel="external">这里</a>。</p>
+<p>此时，你会发现你以前装的R包现在都找不到了，是的，你需要重新安装本工程所需要的R包，当然，R自带的包都在。</p>
+<p>如果你在使用Rstudio，点击<code>file|new project</code>，并在弹出的面板中勾选<code>use packrat with this project</code>，Rstudio会帮助你做packrat的初始化。</p>
+<p>到这里，在你把这个工程完成之前，你需要额外做的工作已经结束了。packrat会自动把你安装的包管理起来，但当你删除包的时候需要额外做点工作。虽然一般情况下我们不会删除包，但还是介绍一下以防万一。</p>
+<h3 id="3-若删除包，需要点额外工作"><a href="#3-若删除包，需要点额外工作" class="headerlink" title="3.若删除包，需要点额外工作"></a>3.若删除包，需要点额外工作</h3><p>新安装包时，packrat会自动把包做纪录，但删除包时不会，所以，当删除包之后，需要在R控制台执行如下语句：<br><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">packrat::snapshot()</div></pre></td></tr></table></figure></p>
+<h3 id="4-打包工程，部署"><a href="#4-打包工程，部署" class="headerlink" title="4.打包工程，部署"></a>4.打包工程，部署</h3><p>当你把整个工程都写完，并测试通过以后，你可能需要把工程部署到服务器上，此时需要先将工程打包：<br><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">packrat::bundle()</div></pre></td></tr></table></figure></p>
+<p>会在packrat目录下新建一个bundles目录，存放一个以工程名字命名的压缩包。把压缩包放到服务器上，打开服务器的R执行以下语句：<br><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">packrat::bundle(<span class="string">"以工程名字命名的压缩包"</span>,</div><div class="line">                where=<span class="string">"解压后存放的目录"</span>)</div></pre></td></tr></table></figure></p>
+<p>将压缩包解压到指定目录，并安装依赖的包。</p>
+<p>从解压的目录里打开工程，即可还原工程的环境。<br>或者从解压目录里启动R，将自动进入工程。</p>
+<p>如果需要以命令行的方式执行你的脚本，请先<code>cd</code>到工程目录里，再执行脚本：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> 工程目录</div><div class="line">Rscript myscript.R</div></pre></td></tr></table></figure></p>
+<p>恭喜你，你打败了99%的R用户！</p>
 
       
     </div>
@@ -433,7 +415,13 @@
       
         <div class="post-tags">
           
-            <a href="/tags/jacman/" rel="tag"># jacman</a>
+            <a href="/tags/R/" rel="tag"># R</a>
+          
+            <a href="/tags/包依赖/" rel="tag"># 包依赖</a>
+          
+            <a href="/tags/工程/" rel="tag"># 工程</a>
+          
+            <a href="/tags/部署/" rel="tag"># 部署</a>
           
         </div>
       
@@ -446,8 +434,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/06/20/Rserve杂记/" rel="next" title="Rserve杂记">
-                <i class="fa fa-chevron-left"></i> Rserve杂记
+              <a href="/2016/03/30/R中的正则表达式/" rel="next" title="R中的正则表达式">
+                <i class="fa fa-chevron-left"></i> R中的正则表达式
               </a>
             
           </div>
@@ -455,10 +443,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/06/24/EM算法/" rel="prev" title="EM算法">
-                EM算法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -484,8 +468,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2015/06/20/jacman主题的一些配置/"
-           data-title="jacman主题的一些配置" data-url="juntai.github.io/2015/06/20/jacman主题的一些配置/">
+      <div class="ds-thread" data-thread-key="2017/08/05/R包依赖管理——packrat/"
+           data-title="R包依赖管理——packrat" data-url="juntai.github.io/2017/08/05/R包依赖管理——packrat/">
       </div>
     
   </div>
@@ -611,7 +595,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#配置jacman"><span class="nav-number">1.</span> <span class="nav-text">配置jacman</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#公式"><span class="nav-number">1.1.</span> <span class="nav-text">公式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#评论"><span class="nav-number">1.2.</span> <span class="nav-text">评论</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#教程的一些修改"><span class="nav-number">2.</span> <span class="nav-text">教程的一些修改</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#部署Hexo"><span class="nav-number">2.1.</span> <span class="nav-text">部署Hexo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用与调试"><span class="nav-number">2.2.</span> <span class="nav-text">使用与调试</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#原理"><span class="nav-number">1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用方法"><span class="nav-number">2.</span> <span class="nav-text">使用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-安装packrat"><span class="nav-number">2.1.</span> <span class="nav-text">1.安装packrat</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-建工程，并初始化packrat"><span class="nav-number">2.2.</span> <span class="nav-text">2.建工程，并初始化packrat</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-若删除包，需要点额外工作"><span class="nav-number">2.3.</span> <span class="nav-text">3.若删除包，需要点额外工作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-打包工程，部署"><span class="nav-number">2.4.</span> <span class="nav-text">4.打包工程，部署</span></a></li></ol></li></ol></div>
             
 
           </div>
