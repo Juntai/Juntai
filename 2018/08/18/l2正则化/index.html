@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="Juntai的博客">
 <meta property="og:description" content="$L^2$正则化是机器学习中常用的抗过拟合手段，本文将介绍正则化的一般形式及$L^2$正则化的推导过程，并从不同角度理解$L^2$如何起到权重衰减的作用。">
 <meta property="og:image" content="juntai.github.io/2018/08/18/l2正则化/l2regularization.png">
-<meta property="og:updated_time" content="2018-08-26T14:43:37.669Z">
+<meta property="og:updated_time" content="2018-08-26T15:04:44.189Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="正则化（1）—— $L^2$正则化">
 <meta name="twitter:description" content="$L^2$正则化是机器学习中常用的抗过拟合手段，本文将介绍正则化的一般形式及$L^2$正则化的推导过程，并从不同角度理解$L^2$如何起到权重衰减的作用。">
@@ -425,7 +425,7 @@
 <p>在二维空间下可以通过下图有直观的理解。图中的实线椭圆表示没有添加正则化项的目标函数的等值线，虚线圆表示$L^2$正则化项的等值线。$w^*$表示原始目标函数的最优解，$\tilde{w}$表示添加了$L^2$的目标函数的最优解。在$\tilde{w}$点，原目标函数和正则化两个目标达到平衡。目标函数$J$的Hessian矩阵的第一维特征值很小。在第一维上的变动对目标函数的影响小，正则化项对该维具有强烈影响。正则化把$w_1$拉向零。目标函数$J$对第二维的变动比较敏感，对应的特征值较大。因此正则化项对$w_2$的影响较小。</p>
 <img src="/2018/08/18/l2正则化/l2regularization.png" alt="l2正则化对w的影响" title="l2正则化对w的影响">
 <blockquote>
-<p>只有在显著减小目标函数的方向上的参数会保留的相对完好。在无助于目标函数减小的方向的分量会在训练过程中因正则化儿衰减掉。</p>
+<p>只有在显著减小目标函数的方向上的参数会保留的相对完好。在无助于目标函数减小的方向的分量会在训练过程中因正则化而衰减掉。</p>
 </blockquote>
 <!-- 
 ## 2.2 转化为带限制条件的最优化问题
