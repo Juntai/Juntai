@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="Juntai的博客">
 <meta property="og:description" content="$L^2$正则化是机器学习中常用的抗过拟合手段，本文将介绍正则化的一般形式及$L^2$正则化的推导过程，并从不同角度理解$L^2$如何起到权重衰减的作用。">
 <meta property="og:image" content="juntai.github.io/images/l2regularization.png">
-<meta property="og:updated_time" content="2018-08-26T14:00:54.218Z">
+<meta property="og:updated_time" content="2018-08-26T14:03:17.870Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="正则化（1）—— $L^2$正则化">
 <meta name="twitter:description" content="$L^2$正则化是机器学习中常用的抗过拟合手段，本文将介绍正则化的一般形式及$L^2$正则化的推导过程，并从不同角度理解$L^2$如何起到权重衰减的作用。">
@@ -423,7 +423,7 @@
 <p>当$\lambda_i \gg \alpha$时，$\frac{\lambda_i}{\lambda_i + \alpha} \approx \lambda_i$，正则化的影响较小，即沿着$H$特征值较大的方向正则化的影响较小。当$\lambda_i \ll \alpha$时，$\frac{\lambda_i}{\lambda_i + \alpha} \rightarrow 0$，第$i$个分量将会被收缩到几乎为零。</p>
 <p>$\alpha$的大小可以控制对权重的影响大小。$\alpha$越大，$w$受显著影响的分量个数会增多，影响的程度也会增大。</p>
 <p>在二维空间下可以通过下图有直观的理解。图中的实线椭圆表示没有添加正则化项的目标函数的等值线，虚线圆表示$L^2$正则化项的等值线。$w^*$表示原始目标函数的最优解，$\tilde{w}$表示添加了$L^2$的目标函数的最优解。在$\tilde{w}$点，原目标函数和正则化两个目标达到平衡。目标函数$J$的Hessian矩阵的第一维特征值很小。在第一维上的变动对目标函数的影响小，正则化项对该维具有强烈影响。正则化把$w_1$拉向零。目标函数$J$对第二维的变动比较敏感，对应的特征值较大。因此正则化项对$w_2$的影响较小。</p>
-<p><img src="/images/l2regularization.png" width="400" align="center"></p>
+<p><img src="images/l2regularization.png" width="400" align="center"></p>
 <blockquote>
 <p>只有在显著减小目标函数的方向上的参数会保留的相对完好。在无助于目标函数减小的方向的分量会在训练过程中因正则化儿衰减掉。</p>
 </blockquote>
