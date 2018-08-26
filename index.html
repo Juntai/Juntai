@@ -258,6 +258,222 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="juntai.github.io/2018/08/18/l2正则化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Juntai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Juntai的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/08/18/l2正则化/" itemprop="url">
+                  正则化（1）—— $L^2$正则化
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-18T11:36:02+08:00">
+                2018-08-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/18/l2正则化/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/08/18/l2正则化/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/08/18/l2正则化/" class="leancloud_visitors" data-flag-title="正则化（1）—— $L^2$正则化">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>记得第一次接触到正则化的相关概念是在本科的统计学课程上。当时老师在讲到多元线性回归问题时提到了可以在原始模型上增加对系数的惩罚项，惩罚可以是对系数的平方和，也可以是对系数的绝对值。印象中，老师还提到了平方惩罚比较好求解，绝对值惩罚不好求解，以至于很长时间大家一直在用平方惩罚项，但后来有学者发明了对绝对值惩罚项求解的高效方法。现在回想起来，当时对惩罚项是不太理解的，并且它也没有激起我深入弄明白它的兴趣。真正开始对正则化有理解是从研究生开始的。正则化是从英文“regularization”翻译过来的，从名字上来看并不能有很直观的理解，没有“罚”（penality）来的直接。“罚”可以直观理解为对系数的惩罚，而“正则化”很容易与正则表达式建立联系，虽然两者并没有半毛钱关系。</p>
+<p>正则化看似简单，但想要有比较深入的理解还是要花些功夫的。这次看完理解了，下次可能又会忘掉很多关键细节。鉴于此，把其中的关键问题和细节总结一下，一方面便于自己梳理知识及后来翻阅，另一方面也希望给大家一个参考并与大家一起交流学习。</p>
+<p>正则化是用来解决机器学习中的核心问题——提高模型的泛化能力的，即让模型不仅在训练数据上表现好，并且能在新数据上表现好。用偏差-方差理论来说是以牺牲偏差为代价换取方差的降低。在一般的机器学习模型中，我们主要会遇到三种情况：</p>
+<ul>
+<li>模型空间不包含真实数据的生成过程——对应欠拟合和偏差情况</li>
+<li>模型匹配真实数据的生成过程</li>
+<li>模型除了包括真实数据的生成过程，还包括许多其他可能的生成过程——方差主导的过拟合</li>
+</ul>
+<p>正则化的目标是使模型从第三种情况转化为第二种情况。</p>
+<p>实践中，我们所使用的模型族不一定包括真实数据的生成过程，甚至也不包括其近似过程。尤其是在深度学习的场景里，真实数据的生成过程几乎肯定在模型族之外。在复杂的机器学习场景中，最好的拟合模型是一个适当正则化的大规模模型。</p>
+<h1 id="1-参数正则化"><a href="#1-参数正则化" class="headerlink" title="1. 参数正则化"></a>1. 参数正则化</h1><p>正则化方法通过对目标函数$J$添加一个参数范数惩罚$\Omega(\theta)$，将正则化的目标函数记为$\tilde{J}$:</p>
+<p>$$<br>\begin{equation}<br>\tilde{J}(\theta; X,y)=J(\theta;X,y)+\alpha\Omega(\theta)<br>\tag{1.1}<br>\end{equation}<br>$$</p>
+<p>其中$\alpha \in [0, +\infty)$是超参数，权衡范数惩罚项$\Omega$和标准目标函数$J$的相对贡献。当$\alpha=0$时表示没有正则化，$\alpha$越大，对应的正则化惩罚越大。</p>
+<p>当最小化添加正则化后的目标函数$\tilde{J}$时，最优化算法会降低原始目标$J$关于训练数据的误差的同时减小参数$\theta$的规模。选择不同的参数范数$\Omega$需要使用不同的解法。下面先介绍参数的平方范数时的正则化——$L^2$参数正则化。</p>
+<h1 id="2-L-2-参数正则化"><a href="#2-L-2-参数正则化" class="headerlink" title="2. $L^2$参数正则化"></a>2. $L^2$参数正则化</h1><p>$L^2$参数正则化是向目标函数添加正则项$\Omega(\theta)=\frac{1}{2}||w||_2^2$。$L^2$也被叫做权重衰减（weight decay）或岭回归（Ridge Regression）。添加了$L^2$正则化的目标函数可以写作：<br>$$<br>\begin{equation}<br>\tilde{J}(w; X,y) = J(w;X,y) + \frac{\alpha}{2}w^Tw<br>\tag{2.1}<br>\end{equation}<br>$$<br>梯度为：<br>$$<br>\begin{equation}<br>\nabla_w\tilde{J}(w; X,y)=\nabla_wJ(w;X,y)+\alpha w<br>\tag{2.2}<br>\end{equation}<br>$$<br>使用梯度下降法更新权重：<br>$$<br>\begin{equation}<br>w\leftarrow w - \epsilon(\nabla_wJ(w;X,y)+\alpha w)<br>\tag{2.3}<br>\end{equation}<br>$$<br>也可为写作：<br>$$<br>\begin{equation}<br>w\leftarrow (1-\epsilon\alpha)w - \epsilon\nabla_wJ(w;X,y)<br>\tag{2.4}<br>\end{equation}<br>$$</p>
+<p>与没有加入正则化的目标函数的梯度更新公式相比，每一次权重更新时，$L^2$先对权重做衰减，衰减为原来的$1-\epsilon\alpha$倍。这也是$L^2$被称为权重衰减的原因。</p>
+<p>在单步权重更新中，先做了权重衰减，那么在整个训练过程中会带来哪些不同呢？</p>
+<p>直观理解$L^2$对$w$的影响的最直接方式是对比加入$L^2$前后的$w$的解析解。但是，$J(w;X,y)$一般都很复杂，很难得到$w$的显式解析解。幸运的是，我们可以通过对目标函数做近似，来近似的得出$w$的解析解。</p>
+<h2 id="2-1-二次近似情况下理解-L-2"><a href="#2-1-二次近似情况下理解-L-2" class="headerlink" title="2.1 二次近似情况下理解$L^2$"></a>2.1 二次近似情况下理解$L^2$</h2><p>令$w^<em>$为不含正则项的目标函数取得最小训练误差时的权重向量，即<br>$$<br>\begin{equation}<br>w^</em> = \operatorname<em>{arg\,min}_w J(w)<br>\tag{2.5}<br>\end{equation}<br>$$<br>用泰勒展开，在$w^</em>$的邻域对目标函数做二次近似，近似的$\hat{J}(\theta)$如下<br>$$<br>\begin{equation}<br>\hat{J}(w) = J(w^<em>) + (w-w^</em>)^T \nabla_w J(w^<em>;X,y) + \frac{1}{2}(w-w^</em>)^T H (w-w^<em>)<br>\tag{2.6a}<br>\end{equation}<br>$$<br>其中$H$是$J$在$w^</em>$处计算的关于$w$的Hessian矩阵。因为$w^<em>$是不含正则项的目标函数的最优解，所以$\nabla_w J(w^</em>;X,y)$=0，二次近似可以进一步简化为<br>$$<br>\begin{equation}<br>\hat{J}(w) = J(w^<em>) + \frac{1}{2}(w-w^</em>)^T H (w-w^*)<br>\tag{2.6}<br>\end{equation}<br>$$</p>
+<p>因为$w^*$是$J$的一个最优点，可以得出$H$是半正定的。</p>
+<p>为了研究权重衰减带来的影响，我们在式(2.6)中添加$L^2$参数正则化项：<br>$$<br>\begin{equation}<br>\hat{\tilde{J}}(w) = J(w^<em>) + \frac{1}{2}(w-w^</em>)^T H (w-w^<em>) + \frac{\alpha}{2}w^Tw<br>\tag{2.7}<br>\end{equation}<br>$$<br>当$\hat{\tilde{J}}(w) $取最小时，其梯度<br>$$<br>\begin{equation}<br>\nabla_w \hat{\tilde{J}}(w) = H(w-w^</em>)+\alpha w<br>\tag{2.8}<br>\end{equation}<br>$$<br>为0。</p>
+<p>用$\tilde{w}$表示此时的最优点：<br>$$<br>\begin{eqnarray<em>}<br>H(\tilde{w}-w^</em>)+\alpha w = 0    \tag{2.9} \<br>(H+\alpha  I)\tilde{w} = Hw^<em>      \tag{2.10} \<br>\tilde{w} = (H+\alpha I)^{-1}Hw^</em>    \tag{2.11}<br>\end{eqnarray<em>}<br>$$<br>因为$H$是是对称的，所以我们可以将其分解为一个对角矩阵$\Lambda$和一组特征向量的标准正交基$Q$，并且有$H=Q \Lambda Q^T$。代入式(2.11)，可以得到：<br>$$<br>\begin{eqnarray</em>}<br>\tilde{w}  &amp;=&amp; ( Q \Lambda Q^T+\alpha I )^{-1} Q \Lambda Q^T w^<em>    \tag{2.12}\<br>                 &amp;=&amp; ( Q \Lambda Q^T+\alpha Q I Q^T)^{-1} Q \Lambda Q^T w^</em>    \tag{2.13}\<br>                 &amp;=&amp; [Q ( \Lambda +\alpha I ) Q^T]^{-1} Q \Lambda Q^T w^<em>    \tag{2.14}\<br>                 &amp;=&amp; Q ( \Lambda +\alpha I )^{-1} Q^T Q \Lambda Q^T w^</em>    \tag{2.15}\<br>                 &amp;=&amp; Q ( \Lambda +\alpha I )^{-1}  \Lambda Q^T w^<em>    \tag{2.16}\<br>\end{eqnarray</em>}<br>$$</p>
+<p>我们可以看到权重衰减的效果是沿着$H$的特征向量所定义的轴缩放$w^<em>$。$L^2$会根据$\frac{\lambda_i}{\lambda_i + \alpha}$因子缩放与$H$第$i$个特征向量对齐的$w^</em>$的分量（其中$\lambda_i$为$H$的第$i$个特征向量所对应的特征值，即对角矩阵$\Lambda$的第$i$个对角处的值）。</p>
+<p>当$\lambda_i \gg \alpha$时，$\frac{\lambda_i}{\lambda_i + \alpha} \approx \lambda_i$，正则化的影响较小，即沿着$H$特征值较大的方向正则化的影响较小。当$\lambda_i \ll \alpha$时，$\frac{\lambda_i}{\lambda_i + \alpha} \rightarrow 0$，第$i$个分量将会被收缩到几乎为零。</p>
+<p>$\alpha$的大小可以控制对权重的影响大小。$\alpha$越大，$w$受显著影响的分量个数会增多，影响的程度也会增大。</p>
+<p>在二维空间下可以通过下图有直观的理解。图中的实线椭圆表示没有添加正则化项的目标函数的等值线，虚线圆表示$L^2$正则化项的等值线。$w^*$表示原始目标函数的最优解，$\tilde{w}$表示添加了$L^2$的目标函数的最优解。在$\tilde{w}$点，原目标函数和正则化两个目标达到平衡。目标函数$J$的Hessian矩阵的第一维特征值很小。在第一维上的变动对目标函数的影响小，正则化项对该维具有强烈影响。正则化把$w_1$拉向零。目标函数$J$对第二维的变动比较敏感，对应的特征值较大。因此正则化项对$w_2$的影响较小。</p>
+<p><img src="../images/l2regularization.png" width="400" align="center"></p>
+<blockquote>
+<p>只有在显著减小目标函数的方向上的参数会保留的相对完好。在无助于目标函数减小的方向的分量会在训练过程中因正则化儿衰减掉。</p>
+</blockquote>
+<!-- 
+## 2.2 转化为带限制条件的最优化问题
+
+添加了$L^2$的最优化问题可以表示为：
+$$
+\operatorname*{arg\,min}_w J(w;X,y) + \frac{\alpha}{2}w^Tw
+$$
+等价于
+$$
+\operatorname*{arg\,min}_w J(w;X,y) \\
+\begin{eqnarray*}
+\text{s.t.}   \quad
+w^T w &\le \gamma \\
+\gamma &\ge 0
+\end{eqnarray*}
+$$
+-->
+<h2 id="2-2-带-L-2-的线性回归"><a href="#2-2-带-L-2-的线性回归" class="headerlink" title="2.2 带$L^2$的线性回归"></a>2.2 带$L^2$的线性回归</h2><p>在2.1节中使用目标函数的二次近似分析了权重衰减的影响。线性回归模型的损失函数是二次的，使用相同的方法可以分析$L^2$对线性回归的影响。线性回归的目标函数是平方误差之和：</p>
+<p>$$<br>(Xw-y)^T(Xw-y)<br>$$</p>
+<p>解为：</p>
+<p>$$<br>w^* = (X^TX)^{-1}X^Ty<br>$$</p>
+<p>添加$L^2$的目标函数变为</p>
+<p>$$<br>(Xw-y)^T(Xw-y) +\frac{1}{2} \alpha w^T w<br>$$</p>
+<p>令梯度为零，可以得到解为</p>
+<p>$$<br>\tilde{w} = (X^TX + \alpha I)^{-1} X^T y<br>$$</p>
+<p>$w^*$中的矩阵$X^TX$与协方差矩阵$\frac{1}{m}X^TX$成正比。$L^2$正则项将这个矩阵替换为$\tilde{w}$中的$X^TX + \alpha I$，不同之处仅仅是在对角加了$\alpha$。这个矩阵的对角线对应的是每个输入特征的方差。$L^2$正则化能让算法感知到输入特征的方差大小，在与输出目标的协方差较小（$X^Ty$对应着输入特征与输出目标之间的协方差）的特征的权重会被压缩。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="juntai.github.io/2017/08/05/R包依赖管理——packrat/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1097,7 +1313,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1108,7 +1324,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1119,7 +1335,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1181,7 +1397,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-"></i>
   </span>
